@@ -1,0 +1,61 @@
+Shadowrocket操作步骤：
+
+打开Shadowrocket
+
+生成证书文件（先查看版本）
+
+Shadowrocket 2.1.24（717）之前版本：设置 – 证书 – 生成新的 CA证书 – 安装证书
+
+Shadowrocket 2.1.24（717）之后版本：配置 – 点击一个配置文件（默认是default.conf） – 编辑配置 – 开启 HTTPS 解密 – 生成新的 CA证书 – 安装证书
+如果在这个步骤卡在“强制安装证书”页面，点击“强制安装”也无效的情况下，点右下角Safari浏览器图标，使用Safari打开就可以正常安装了
+
+点右上角 – 安装 – 输入手机锁屏密码 – 再次点右上角 – 安装 – 安装 – 右上角 – 完成
+
+打开手机 – 设置 – 通用 – 关于本机 – 证书信任设置 – 找到 – Shadowrocket开头的选项 – 打开右侧开关 – 弹出警告框 – 继续
+
+再次打开Shadowrocket – 配置 – 找到[本地文件]内的配置文件，默认是[default.conf] – 点击 – default.conf – 编辑纯文本
+
+翻到底部，在最后粘贴以下代码：
+
+[URL Rewrite]
+CN $1KR 302
+(?<=\?version_code=)16.. $11 302
+
+[MITM]
+hostname = *.tiktokv.com,*.musical.ly
+然后点击右上角 – 保存
+
+最后返回首页添加节点，此步骤不可跳过；
+
+然后全局路由选择配置，然后开启连接（首次开启需要验证 – Allow – 指纹/密码）
+
+开启美区TikTok（强调，不是国内版抖音），愉快~
+
+
+Quantumult
+打开Quantumult（没有的点此购买/租用账号下载）
+
+开启HTTPS解密并信任Quantumult证书，iOS12.3以下和iOS12.3以上操作略有不同：
+
+iOS12.3以下：打开设置 – HTTPS解密 – 开启HTTPS解密 – 生成密钥及证书 – 右上角点保存 – 允许安装描述文件 – 右上角点安装 – 输入手机的解锁密码 – 右上角点安装 – 安装
+然后前往手机的设置 – 通用 – 关于本机 – 证书信任设置 – 找到Quantumult Custom Root Certificate…点绿它以信任该根证书 – 继续
+
+iOS12.3以上：打开设置 – HTTPS解密 – 开启HTTPS解密 – 生成密钥及证书 – 右上角点保存 – 允许安装描述文件 – 关闭
+然后打开手机设置 – 找到已下载描述文件 – 安装 – 输入手机的解锁密码 – 安装 – 安装
+最后打开手机的设置 – 通用 – 关于本机 – 证书信任设置 – 找到Quantumult Custom Root Certificate…点绿它以信任该根证书 – 继续
+
+安装并信任证书后，返回Quantumult，打开App内设置 –编辑配置文件，找到[REWRITE]，换行后粘贴下方代码
+
+CN url 307 $1US
+(?<=\?version_code=)16.. url 307 $1
+如果需要换区，修改其中的US为其他国家简写，比如JP就是日本
+接着找到[MITM]，同样换行后粘贴下方代码
+
+hostname = *.tiktokv.com,*.musical.ly
+
+Quantumult操作步骤：
+如果需要登录，添加你的节点，没有节点或不需要登录可以跳过此步骤
+
+前往Quantumult的主页 – 开启右上角开关（首次开启需要验证 – Allow – 指纹/密码），右下角模式选择自动分流
+
+从新打开抖音观看（教程通用于美区TikTok最新版和港区TikTok，且可共存，其他区未测试）
